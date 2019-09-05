@@ -22,6 +22,7 @@ func (t *ParserEis) run() {
 func (t *ParserEis) SendMessage() {
 	if len(t.purchases) > 0 {
 		SendPurchaseInfo(EmailUs, t.purchases)
+		t.sendDoc++
 	}
 
 }

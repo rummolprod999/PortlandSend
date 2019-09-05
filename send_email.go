@@ -105,7 +105,6 @@ func SendEmailNew(e Email) error {
 		return err
 	}
 
-	// To && From
 	if err = c.Mail(from.Address); err != nil {
 		return err
 	}
@@ -129,6 +128,7 @@ func SendEmailNew(e Email) error {
 	}
 
 	c.Quit()
+
 	return nil
 }
 func SendPurchaseInfo(UserEmail string, po []Puchase44) {
