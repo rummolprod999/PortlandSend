@@ -51,7 +51,7 @@ func (t *ParserEis) parsingTenderList(p string, url string) {
 
 	})
 	if d == 0 {
-		Logging("We got no purchases")
+		Logging("We got no purchases", url)
 	}
 
 }
