@@ -44,10 +44,15 @@ func (t *ParserEis) parsingTenderList(p string, url string) {
 		Logging(err)
 		return
 	}
+	d := 0
 	doc.Find("div.parametrs div.registerBox.registerBoxBank.margBtm20").Each(func(i int, s *goquery.Selection) {
+		d++
 		t.parsingTenderFromList(s, url)
 
 	})
+	if d == 0 {
+		Logging("We got no purchases")
+	}
 
 }
 
