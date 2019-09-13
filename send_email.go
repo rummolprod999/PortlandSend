@@ -68,7 +68,7 @@ func SendEmail(e Email) error {
 
 func SendEmailNew(e Email) error {
 
-	from := mail.Address{"Parser.zakupki.gov.ru", e.From}
+	from := mail.Address{"Автоматическое уведомление, Госзакупки", e.From}
 	to := mail.Address{"", e.To[0]}
 	subj := e.Subject
 	body := e.Body
