@@ -68,7 +68,7 @@ func SendEmail(e Email) error {
 
 func SendEmailNew(e Email) error {
 
-	from := mail.Address{"ООО Какая-то организация", e.From}
+	from := mail.Address{"Parser.zakupki.gov.ru", e.From}
 	to := mail.Address{"", e.To[0]}
 	subj := e.Subject
 	body := e.Body
@@ -144,6 +144,20 @@ func SendPurchaseInfo(UserEmail string, po []Puchase44) {
 		Logging(err)
 
 	}
+	db, err := DbConnection()
+	if err != nil {
+		Logging(err)
+		return
+	}
+	defer db.Close()
+	for _, p := range po {
+		_, err = db.Exec("INSERT INTO purchase (id, purchase_num) VALUES (NULL, $1)", p.PurNum)
+		if err != nil {
+			Logging(err)
+			return
+		}
+	}
+
 }
 
 var BodyEmailNew = `<p><strong>Добрый день!</strong><br />По Вашему запросу предоставлен список тендеров, срок подачи заявок на которые еще не истек. </p>

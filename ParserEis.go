@@ -98,11 +98,6 @@ func (t *ParserEis) checkPurchase(p Puchase44) {
 		return
 	}
 	rows.Close()
-	_, err = db.Exec("INSERT INTO purchase (id, purchase_num) VALUES (NULL, $1)", p.PurNum)
-	if err != nil {
-		Logging(err)
-		return
-	}
 	t.addDoc++
 	t.purchases = append(t.purchases, p)
 }
