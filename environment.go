@@ -24,6 +24,10 @@ var FileDB = "bd_purchase.sqlite"
 var StartUrl = ""
 var Urls = []string{"http://zakupki.gov.ru/epz/order/quicksearch/search.html?searchString=цемент&morphology=on&pageNumber=1&sortDirection=false&recordsPerPage=_50&showLotsInfoHidden=false&fz44=on&fz223=on&af=on&priceFrom=4000000&currencyId=-1&regionDeleted=false&sortBy=UPDATE_DATE", "http://zakupki.gov.ru/epz/order/quicksearch/search.html?searchString=Портландцемент&morphology=on&pageNumber=1&sortDirection=false&recordsPerPage=_50&showLotsInfoHidden=false&fz44=on&fz223=on&af=on&priceFrom=4000000&currencyId=-1&regionDeleted=false&sortBy=UPDATE_DATE", "http://zakupki.gov.ru/epz/order/quicksearch/search.html?searchString=Портланд-цемент&morphology=on&pageNumber=1&sortDirection=false&recordsPerPage=_50&showLotsInfoHidden=false&fz44=on&fz223=on&af=on&priceFrom=4000000&currencyId=-1&regionDeleted=false&sortBy=UPDATE_DATE", "http://zakupki.gov.ru/epz/order/quicksearch/search.html?searchString=Портланд+цемент&morphology=on&pageNumber=1&sortDirection=false&recordsPerPage=_50&showLotsInfoHidden=false&fz44=on&fz223=on&af=on&priceFrom=4000000&currencyId=-1&regionDeleted=false&sortBy=UPDATE_DATE"}
 
+var UrlsNew = []string{}
+
+var KeyWords = []string{"Цемент", "Портландцемент", "Портланд-цемент", "Портланд цемент", "цемент"}
+
 func DbConnection() (*sql.DB, error) {
 	db, err := sql.Open("sqlite3", fmt.Sprintf("file:%s?_journal_mode=OFF&_synchronous=OFF", FileDB))
 	return db, err
