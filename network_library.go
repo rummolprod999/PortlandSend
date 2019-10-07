@@ -20,7 +20,7 @@ func DownloadPage(url string) string {
 		st = GetPageUA(url)
 		if st == "" {
 			count++
-			Logging("Got empty page", url)
+			//Logging("Got empty page", url)
 			time.Sleep(time.Second * 5)
 			continue
 		}
