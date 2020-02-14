@@ -57,13 +57,13 @@ func (t *ParserEisNew) parsingTenderList(p string, url string) {
 
 func (t *ParserEisNew) parsingTenderFromList(p *goquery.Selection, url string) {
 	defer SaveStack()
-	purNum := strings.TrimSpace(p.Find("div.registry-entry__header-top__number a").First().Text())
+	purNum := strings.TrimSpace(p.Find("div.registry-entry__header-mid__number a").First().Text())
 	purNum = strings.Replace(purNum, "№ ", "", -1)
 	purName := strings.TrimSpace(p.Find("div:contains('Объект закупки') + div.registry-entry__body-value").First().Text())
 	pubDate := strings.TrimSpace(p.Find("div.data-block > div:contains('Размещено') + div").First().Text())
 	nmck := strings.TrimSpace(p.Find("div.price-block > div:contains('Начальная цена') + div").First().Text())
 	//nmck = delallwhitespace(nmck)
-	hrefT := p.Find("div.registry-entry__header-top__number a")
+	hrefT := p.Find("div.registry-entry__header-mid__number a")
 	href, exist := hrefT.Attr("href")
 	if !exist {
 		fmt.Println(p.Text())
